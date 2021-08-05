@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import Form from './Form'
-// import Table from './Table'
+import Table from './Table'
 
 class TodoList extends Component{
     state = {
-        todos: []
+        todos: [],
     }
 
     handleSubmit = (todo) => {
@@ -30,13 +30,11 @@ class TodoList extends Component{
     }
 
     render(){
-        const {todos} = this.state
-
         return(
             <div className="TodoList">
                 <h1>Todo List</h1>
                 <Form handleSubmit={this.handleSubmit}/>
-                {/* <Table editTodo={this.editTodo} removeTodo={this.removeTodo}/> */}
+                <Table todosData={this.state.todos} editTodo={this.editTodo} removeTodo={this.removeTodo}/>
             </div>
         )
     }
