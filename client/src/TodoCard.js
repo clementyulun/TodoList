@@ -23,7 +23,17 @@ class TodoCard extends Component{
         })
     }
 
-    confirmEdit = ()=>{
+    removeTodo = (event)=>{
+        this.props.removeTodo(event.target.name)
+    }
+
+    confirmEdit = (event)=>{
+        const todoData = {
+            title: this.state.title,
+            content: this.state.content,
+            isDone: this.state.isDone
+        }
+        this.props.editTodo(todoData, event.target.name)
         this.setState({
             isEditing: false
         })
@@ -35,7 +45,7 @@ class TodoCard extends Component{
                 <div>
                     <input type="text" name="title" value={this.state.title} onChange={this.handlechange}/>
                     <input type="text" name="content" value={this.state.content} onChange={this.handlechange}/>
-                    <button onClick={this.confirmEdit}> 確認 </button>
+                    <button name={this.props.index} onClick={this.confirmEdit}> 確認 </button>
                 </div>     
             )
         }else{
@@ -44,6 +54,7 @@ class TodoCard extends Component{
                     <h3>{this.state.title}</h3>
                     <p>{this.state.content}</p>
                     <button onClick={this.editTodo}> 修改 </button>
+                    <button name={this.props.index} onClick={this.removeTodo}> 刪除 </button>
                 </div>   
             )
         }

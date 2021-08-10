@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 class Form extends Component{
     InitialState = {
         title: '',
-        content: ''
+        content: '',
+        isDone: false
     }
 
     state = this.InitialState

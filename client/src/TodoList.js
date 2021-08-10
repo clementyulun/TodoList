@@ -13,10 +13,9 @@ class TodoList extends Component{
 
     removeTodo = (index) => {
         const {todos} = this.state
-
         this.setState({
-            todos: todos.filter((todo, i)=>{
-                return i !== index
+            todos: todos.filter((__, i)=>{
+                return i != index
             })
         })
     }
@@ -24,6 +23,8 @@ class TodoList extends Component{
     editTodo = (todo, index)=>{
         const todos = [...this.state.todos]
         todos[index] = todo
+        console.log(index)
+        console.log(todo)
         this.setState({
             todos: todos
         })
