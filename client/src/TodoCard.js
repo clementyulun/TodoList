@@ -5,7 +5,7 @@ class TodoCard extends Component{
         title: this.props.todoData.title,
         content: this.props.todoData.content,
         isEditing: false,
-        isDone: false
+        isDone: this.props.todoData.isDone
     }
 
     state = this.InitialState
@@ -17,17 +17,24 @@ class TodoCard extends Component{
         })
     }
 
-    editTodo = ()=>{
+    handleChecked = (event)=>{
+        this.props.handleCheckTodo(event.target.name)
+        this.setState({
+            isDone: event.target.checked ? true : false
+        })
+    }
+
+    handleEditTodo = ()=>{
         this.setState({
             isEditing: true
         })
     }
 
-    removeTodo = (event)=>{
+    handleRemoveTodo = (event)=>{
         this.props.removeTodo(event.target.name)
     }
 
-    confirmEdit = (event)=>{
+    handleConfirmEdit = (event)=>{
         const todoData = {
             title: this.state.title,
             content: this.state.content,
@@ -43,18 +50,18 @@ class TodoCard extends Component{
         if(this.state.isEditing){
             return(
                 <div>
-                    <input type="text" name="title" value={this.state.title} onChange={this.handlechange}/>
-                    <input type="text" name="content" value={this.state.content} onChange={this.handlechange}/>
-                    <button name={this.props.index} onClick={this.confirmEdit}> 確認 </button>
+                    <h3><input type="checkbox" disabled/><input type="text" name="title" value={this.state.title} onChange={this.handlechange}/></h3>
+                    <p><input type="text" name="content" value={this.state.content} onChange={this.handlechange}/></p>
+                    <button name={this.props.index} onClick={this.handleConfirmEdit}> 確認 </button>
                 </div>     
             )
         }else{
             return(
                 <div>
-                    <h3>{this.state.title}</h3>
+                    <h3><input type="checkbox" name={this.props.index} onChange={this.handleChecked} checked={this.state.isDone}/>{this.state.title}</h3>
                     <p>{this.state.content}</p>
-                    <button onClick={this.editTodo}> 修改 </button>
-                    <button name={this.props.index} onClick={this.removeTodo}> 刪除 </button>
+                    <button onClick={this.handleEditTodo}> 修改 </button>
+                    <button name={this.props.index} onClick={this.handleRemoveTodo}> 刪除 </button>
                 </div>   
             )
         }

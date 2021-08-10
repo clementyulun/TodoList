@@ -4,7 +4,13 @@ import Table from './Table'
 
 class TodoList extends Component{
     state = {
-        todos: [],
+        todos: [
+            {
+                title: 'Have Dinner with Jenny',
+                content: 'at 7:30 pm at Ryzo office',
+                isDone: true
+            }
+        ],
     }
 
     handleSubmit = (todo) => {
@@ -20,11 +26,17 @@ class TodoList extends Component{
         })
     }
 
-    editTodo = (todo, index)=>{
+    editTodo = (todo, index) => {
         const todos = [...this.state.todos]
         todos[index] = todo
-        console.log(index)
-        console.log(todo)
+        this.setState({
+            todos: todos
+        })
+    }
+
+    handleCheckTodo = (index) => {
+        const {todos} = this.state
+        todos[index].isDone = todos[index].isDone ? false : true
         this.setState({
             todos: todos
         })
@@ -35,7 +47,7 @@ class TodoList extends Component{
             <div className="TodoList">
                 <h1>Todo List</h1>
                 <Form handleSubmit={this.handleSubmit}/>
-                <Table todosData={this.state.todos} editTodo={this.editTodo} removeTodo={this.removeTodo}/>
+                <Table todosData={this.state.todos} editTodo={this.editTodo} removeTodo={this.removeTodo} handleCheckTodo={this.handleCheckTodo}/>
             </div>
         )
     }
