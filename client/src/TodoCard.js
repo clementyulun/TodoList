@@ -48,19 +48,25 @@ class TodoCard extends Component{
     render(){
         if(this.state.isEditing){
             return(
-                <div>
-                    <h3><input type="checkbox" name={this.props.index} onChange={this.handleChecked} checked={this.state.isDone} disabled/><input type="text" name="title" value={this.state.title} onChange={this.handlechange}/></h3>
+                <div className="content">
+                    <div className={this.state.isDone? "title_done":"title"}>
+                        <input type="checkbox" name={this.props.index} onChange={this.handleChecked} checked={this.state.isDone} disabled/>
+                        <input type="text" name="title" value={this.state.title} onChange={this.handlechange}/>
+                        <button className="todoCard_btn" name={this.props.index} onClick={this.handleConfirmEdit}> 確認 </button>
+                    </div>
                     <p><input type="text" name="content" value={this.state.content} onChange={this.handlechange}/></p>
-                    <button name={this.props.index} onClick={this.handleConfirmEdit}> 確認 </button>
+                    
                 </div>     
             )
         }else{
             return(
-                <div>
-                    <h3><input type="checkbox" name={this.props.index} onChange={this.handleChecked} checked={this.state.isDone}/>{this.state.title}</h3>
+                <div className="content">
+                    <div className={this.state.isDone? "title_done":"title"}>
+                        <input type="checkbox" name={this.props.index} onChange={this.handleChecked} checked={this.state.isDone}/>{this.state.title}
+                        <button className="todoCard_btn" onClick={this.handleEditTodo} style={{display: this.state.isDone ? 'none' : 'inline'}}> 修改 </button>
+                        <button className="todoCard_btn" name={this.props.index} onClick={this.handleRemoveTodo}> 刪除 </button>
+                    </div>
                     <p>{this.state.content}</p>
-                    <button onClick={this.handleEditTodo} style={{display: this.state.isDone ? 'none' : 'inline'}}> 修改 </button>
-                    <button name={this.props.index} onClick={this.handleRemoveTodo}> 刪除 </button>
                 </div>   
             )
         }

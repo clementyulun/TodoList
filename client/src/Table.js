@@ -10,7 +10,7 @@ const Table = (props) => {
         )
     })
 
-    return(<div>{todoCards}</div>)
+    return(<div className="todo_area">{todoCards}</div>)
 }
 
 export default Table

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Form from './Form'
 import Table from './Table'
+import './stylesheets/style.css'
 
 class TodoList extends Component{
     state = {
@@ -140,6 +141,8 @@ class TodoList extends Component{
             <div className="TodoList">
                 <h1>Todo List</h1>
                 <Form handleSubmit={this.handleSubmit}/>
+                <br/>
+                <br/>
                 <Table todosData={this.state.todos} editTodo={this.editTodo} removeTodo={this.removeTodo} handleCheckTodo={this.handleCheckTodo}/>
             </div>
         )

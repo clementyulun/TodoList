@@ -1,0 +1,37 @@
+body{
+    padding: 50px;
+}
+
+.todo_area{
+    margin: 10px 0;
+}
+
+.title{
+    background-color: #09435a;
+    color: white;
+    padding: 10px 10px;
+    font-size: 18px;
+}
+
+.title_done{
+    background-color: #b3b6b8;
+    text-decoration: line-through;
+    padding: 10px 10px;
+    font-size: 18px;
+}
+
+.content{
+    background-color: #dcf4fd;
+    padding: 10px 10px;
+}
+
+.content_done{
+    background-color: #f6f8f8e8;
+    text-decoration: line-through;
+    padding: 10px 10px;
+}
+
+.todoCard_btn{
+    float: right;
+    margin: 1px;
+}

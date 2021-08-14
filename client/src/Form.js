@@ -44,6 +44,7 @@ class Form extends Component{
                     onChange={this.handleChange}
                 />
                 <br/>
+                <br/>
                 <input
                     type="button"
                     value="submit"
