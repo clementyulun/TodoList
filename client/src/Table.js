@@ -6,7 +6,7 @@ const Table = (props) => {
     const {removeTodo, editTodo, handleCheckTodo} = props
     const todoCards = props.todosData.map((todoData, index)=>{
         return(
-            <TodoCard key={index} index={index} todoData={todoData} removeTodo={removeTodo} editTodo={editTodo} handleCheckTodo={handleCheckTodo}/>
+            <TodoCard key={todoData._id} index={todoData._id} todoData={todoData} removeTodo={removeTodo} editTodo={editTodo} handleCheckTodo={handleCheckTodo}/>
         )
     })
 

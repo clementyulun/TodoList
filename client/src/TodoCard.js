@@ -1,14 +1,13 @@
 import React, {Component} from 'react'
 
 class TodoCard extends Component{
-    InitialState = {
+    state = {
         title: this.props.todoData.title,
         content: this.props.todoData.content,
         isEditing: false,
         isDone: this.props.todoData.isDone
     }
 
-    state = this.InitialState
 
     handlechange = (event)=>{
         const {name, value} = event.target
@@ -50,7 +49,7 @@ class TodoCard extends Component{
         if(this.state.isEditing){
             return(
                 <div>
-                    <h3><input type="checkbox" disabled/><input type="text" name="title" value={this.state.title} onChange={this.handlechange}/></h3>
+                    <h3><input type="checkbox" name={this.props.index} onChange={this.handleChecked} checked={this.state.isDone} disabled/><input type="text" name="title" value={this.state.title} onChange={this.handlechange}/></h3>
                     <p><input type="text" name="content" value={this.state.content} onChange={this.handlechange}/></p>
                     <button name={this.props.index} onClick={this.handleConfirmEdit}> 確認 </button>
                 </div>     
@@ -60,7 +59,7 @@ class TodoCard extends Component{
                 <div>
                     <h3><input type="checkbox" name={this.props.index} onChange={this.handleChecked} checked={this.state.isDone}/>{this.state.title}</h3>
                     <p>{this.state.content}</p>
-                    <button onClick={this.handleEditTodo}> 修改 </button>
+                    <button onClick={this.handleEditTodo} style={{display: this.state.isDone ? 'none' : 'inline'}}> 修改 </button>
                     <button name={this.props.index} onClick={this.handleRemoveTodo}> 刪除 </button>
                 </div>   
             )

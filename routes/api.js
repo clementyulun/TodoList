@@ -51,6 +51,7 @@ router.post('/updateTodo', (req, res)=>{
 })
 router.post('/removeTodo', (req, res)=>{
     const id = req.body.id
+    console.log(req.body)
     todoModel.remove({_id: id}, (err, data)=>{
         if(err){
             res.json({"status": 1, "msg": "error"})

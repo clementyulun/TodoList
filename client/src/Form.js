@@ -18,7 +18,8 @@ class Form extends Component{
     }
 
     submitForm = () => {
-        this.props.handleSubmit(this.state)
+        let todo = this.state
+        this.props.handleSubmit(todo)
         this.setState(this.InitialState)
     }
 
